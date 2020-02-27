@@ -1,0 +1,391 @@
+﻿{
+  "identifier": "takebot2",
+  "accessKey": "TnVMSDNMQVMyZ0FVT3dqTEhyalo=",
+  "messageReceivers": [ { "type": "MessageReceiver" } ],
+  "notificationReceivers": [ { "type": "DeskNotificationReceiver" } ],
+  "serviceProviderType": "ServiceProvider",
+  "settings": {
+    "flow": {
+      "id": "3ef45e94-0558-470b-9c69-66f6f0afae11",
+      "states": [
+        {
+          "id": "onboarding",
+          "root": true,
+          "name": "Início",
+          "inputActions": [],
+          "input": { "bypass": false },
+          "outputActions": [],
+          "outputs": [
+            {
+              "stateId": "welcome",
+              "conditions": [
+                {
+                  "source": "input",
+                  "comparison": "matches",
+                  "values": [ ".*" ]
+                }
+              ]
+            },
+            { "stateId": "fallback" }
+          ]
+        },
+        {
+          "id": "fallback",
+          "name": "Exceções",
+          "inputActions": [],
+          "input": { "bypass": true },
+          "outputActions": [],
+          "outputs": [
+            {
+              "stateId": "error",
+              "conditions": [
+                {
+                  "source": "input",
+                  "comparison": "matches",
+                  "values": [ ".*" ]
+                }
+              ]
+            },
+            { "stateId": "onboarding" }
+          ]
+        },
+        {
+          "id": "welcome",
+          "name": "Boas vindas",
+          "inputActions": [
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "00000000-0000-0000-0000-000000000000",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "00000000-0000-0000-0000-000000000001",
+                "type": "text/plain",
+                "content": "Olá! {{contact.name}}!\nEu sou o Jarvis, um bot que busca como informação os 5 repositórios criados na linguagem C# mais antigos da Take no GitHub, ordenados de forma crescente por data de criação.",
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "844cb63f-23b2-4b41-9af5-29d7e04dd98d",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "894726f5-ffef-45bf-9300-f2d4d3b67452",
+                "type": "application/vnd.lime.select+json",
+                "content": {
+                  "text": "Vamos lá?",
+                  "scope": "immediate",
+                  "options": [
+                    {
+                      "text": "Sim 😍",
+                      "previewText": "Sim 😍",
+                      "value": null,
+                      "index": 0,
+                      "type": null
+                    }
+                  ]
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            }
+          ],
+          "input": { "bypass": false },
+          "outputActions": [],
+          "outputs": [
+            {
+              "stateId": "82a477e1-b0f8-4766-9bb7-0d213a043e79",
+              "conditions": [
+                {
+                  "source": "input",
+                  "comparison": "exists",
+                  "values": []
+                }
+              ]
+            },
+            { "stateId": "fallback" }
+          ]
+        },
+        {
+          "id": "error",
+          "name": "Erro padrão",
+          "inputActions": [
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "00000000-0000-0000-0000-000000000002",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "00000000-0000-0000-0000-000000000003",
+                "type": "text/plain",
+                "content": "Desculpe, não consegui entender!",
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "b401f4f7-1b94-43af-9f81-272ead82f869",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "1bbe789d-b2e9-4b9c-a5f5-f0180128c0db",
+                "type": "application/vnd.lime.select+json",
+                "content": {
+                  "text": "Vamos tentar novamente?",
+                  "scope": "immediate",
+                  "options": [
+                    {
+                      "text": "Sim 👍",
+                      "previewText": "Sim 👍",
+                      "value": null,
+                      "index": 0,
+                      "type": null
+                    },
+                    {
+                      "text": "Não 👎",
+                      "previewText": "Não 👎",
+                      "value": null,
+                      "index": 1,
+                      "type": null
+                    }
+                  ]
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            }
+          ],
+          "input": { "bypass": false },
+          "outputActions": [],
+          "outputs": [
+            {
+              "stateId": "welcome",
+              "conditions": [
+                {
+                  "source": "input",
+                  "comparison": "contains",
+                  "values": [ "Sim" ]
+                }
+              ]
+            },
+            {
+              "stateId": "onboarding",
+              "conditions": [
+                {
+                  "source": "input",
+                  "comparison": "contains",
+                  "values": [ "Não" ]
+                }
+              ]
+            },
+            { "stateId": "onboarding" }
+          ]
+        },
+        {
+          "id": "82a477e1-b0f8-4766-9bb7-0d213a043e79",
+          "root": false,
+          "name": "1 - Carrossel dos 5 repositórios C# da Take no Git",
+          "inputActions": [
+            {
+              "type": "ProcessHttp",
+              "settings": {
+                "headers": {},
+                "method": "GET",
+                "uri": "https://api-chatbottake.herokuapp.com/",
+                "responseStatusVariable": "status",
+                "responseBodyVariable": "response"
+              },
+              "conditions": []
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "8588911b-55e9-44ec-b26b-261041df0e51",
+                "type": "application/vnd.lime.chatstate+json",
+                "content": {
+                  "state": "composing",
+                  "interval": 1000
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            },
+            {
+              "type": "SendMessage",
+              "settings": {
+                "id": "4f2f42a6-9300-425b-af84-92b3b04bda1f",
+                "type": "application/vnd.lime.collection+json",
+                "content": {
+                  "itemType": "application/vnd.lime.document-select+json",
+                  "items": [
+                    {
+                      "header": {
+                        "type": "application/vnd.lime.media-link+json",
+                        "value": {
+                          "title": "{{response@avatar}}",
+                          "text": "{{response@subtitulo}}",
+                          "type": "image/jpeg",
+                          "uri": "{{response@avatar}}",
+                          "aspectRatio": "2:1"
+                        }
+                      },
+                      "options": [],
+                      "id": 0,
+                      "editing": false
+                    },
+                    {
+                      "header": {
+                        "type": "application/vnd.lime.media-link+json",
+                        "value": {
+                          "title": "{{response@titulo}}",
+                          "text": "{{response@subtitulo}}",
+                          "type": "image/jpeg",
+                          "uri": "{{response@avatar}}",
+                          "aspectRatio": "2:1"
+                        }
+                      },
+                      "options": [],
+                      "id": 1,
+                      "editing": false
+                    },
+                    {
+                      "header": {
+                        "type": "application/vnd.lime.media-link+json",
+                        "value": {
+                          "title": "{{response@titulo}}",
+                          "text": "{{response@subtitulo}}",
+                          "type": "image/jpeg",
+                          "uri": "{{response@avatar}}",
+                          "aspectRatio": "2:1"
+                        }
+                      },
+                      "options": [],
+                      "editing": false,
+                      "id": 2
+                    },
+                    {
+                      "header": {
+                        "type": "application/vnd.lime.media-link+json",
+                        "value": {
+                          "title": "{{response@titulo}}",
+                          "text": "{{response@subtitulo}}",
+                          "type": "image/jpeg",
+                          "uri": "{{response@avatar}}",
+                          "aspectRatio": "2:1"
+                        }
+                      },
+                      "options": [],
+                      "editing": false,
+                      "id": 3
+                    },
+                    {
+                      "header": {
+                        "type": "application/vnd.lime.media-link+json",
+                        "value": {
+                          "title": "{{response@titulo}}",
+                          "text": "{{response@subtitulo}}",
+                          "type": "image/jpeg",
+                          "uri": "{{response@avatar}}",
+                          "aspectRatio": "2:1"
+                        }
+                      },
+                      "options": [],
+                      "editing": false,
+                      "id": 4
+                    }
+                  ]
+                },
+                "metadata": {
+                  "#stateName": "{{state.name}}",
+                  "#stateId": "{{state.id}}",
+                  "#messageId": "{{input.message@id}}"
+                }
+              }
+            }
+          ],
+          "input": { "bypass": false },
+          "outputActions": [],
+          "outputs": [ { "stateId": "onboarding" } ]
+        }
+      ],
+      "configuration": {
+        "builder:minimumIntentScore": "0.5",
+        "builder:stateTrack": "false",
+        "builder:useTunnelOwnerContext": "false"
+      },
+      "inputActions": [],
+      "outputActions": []
+    }
+  },
+  "settingsType": "Settings"
+}

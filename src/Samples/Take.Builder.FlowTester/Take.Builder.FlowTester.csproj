@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NSubstitute" Version="4.2.1" />
+    <PackageReference Include="Take.Blip.Client.TestKit" Version="0.5.285" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Take.Blip.Builder\Take.Blip.Builder.csproj" />
+    <ProjectReference Include="..\..\Take.Blip.Client\Take.Blip.Client.csproj" />
+  </ItemGroup>
+
+</Project>
